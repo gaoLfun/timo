@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ea6523bb-8918-48d0-99d3-60ec33248df9" name="Default Changelist" comment="新版本" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,5 +99,27 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新版本" />
     <option name="LAST_COMMIT_MESSAGE" value="新版本" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1867" height="336" key="GridCell.Tab.0.bottom" timestamp="1591065095187">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1867" height="336" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1591065095187" />
+    <state width="1867" height="336" key="GridCell.Tab.0.center" timestamp="1591065095187">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1867" height="336" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1591065095187" />
+    <state width="1867" height="336" key="GridCell.Tab.0.left" timestamp="1591065095186">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1867" height="336" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1591065095186" />
+    <state width="1867" height="336" key="GridCell.Tab.0.right" timestamp="1591065095187">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1867" height="336" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1591065095187" />
+    <state x="717" y="418" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591065397385">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="717" y="418" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050@0.0.1920.1050" timestamp="1591065397385" />
   </component>
 </project>
