@@ -1,7 +1,6 @@
 layui.use(['element', 'form', 'layer', 'upload'], function () {
     var $ = layui.jquery;
     var element = layui.element; //加载element模块
-    var form = layui.form; //加载form模块
     var layer = layui.layer; //加载layer模块
     var upload = layui.upload;  //加载upload模块
 
@@ -94,12 +93,16 @@ layui.use(['element', 'form', 'layer', 'upload'], function () {
 
     /* AJAX请求默认选项，处理连接超时问题 */
     $.ajaxSetup({
-        complete: function (xhr, status) {
-            if (xhr.status == 401) {
+        beforeSend: function () {
+            layer.load(0);
+        },
+        complete: function (xhr) {
+            layer.closeAll('loading');
+            if (xhr.status === 401) {
                 layer.confirm('session连接超时，是否重新登录？', {
                     btn: ['是', '否']
                 }, function () {
-                    if (window.parent.window != window) {
+                    if (window.parent.window !== window) {
                         window.top.location = window.location.pathname + '/login';
                     }
                 });
@@ -116,10 +119,10 @@ layui.use(['element', 'form', 'layer', 'upload'], function () {
                     parent.location.reload();
                     return;
                 }
-                if (result.data == null) {
-                    window.location.reload();
+                if (result.data != null && result.data.url != null) {
+                    window.location.href = result.data.url;
                 } else {
-                    window.location.href = result.data
+                    window.location.reload();
                 }
             }, 2000);
         } else {
@@ -199,23 +202,24 @@ layui.use(['element', 'form', 'layer', 'upload'], function () {
             param = param.substr(0, param.length - 1);
             url += "?" + param;
         }
-        var size = $(this).attr("data-size");
-        if (size === undefined || size === "auto") {
-            size = ['50%', '80%'];
-        }else if (size === "max") {
-            size = ['100%', '100%'];
+        var size = $(this).attr("data-size"), layerArea;
+        if (size === undefined || size === "auto" || size === "max") {
+            layerArea = ['50%', '80%'];
         }else if (size.indexOf(',') !== -1) {
             var split = size.split(",");
-            size = [split[0] + 'px', split[1] + 'px'];
+            layerArea = [split[0] + 'px', split[1] + 'px'];
         }
         window.layerIndex = layer.open({
             type: 2,
             title: title,
             shadeClose: true,
             maxmin: true,
-            area: size,
+            area: layerArea,
             content: [url, 'on']
         });
+        if (size === "max") {
+            layer.full(layerIndex);
+        }
     });
 
     /* 关闭弹出层 */

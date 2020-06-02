@@ -85,7 +85,10 @@ public class GenerateController {
             GenerateUtil.genMavenModule(generate);
         }
         // 自动生成菜单和角色权限
-        genMenuRule(generate);
+        if(generate.getTemplate().isController()){
+            genMenuRule(generate);
+        }
+
         return ResultVoUtil.success(fieldMap);
     }
 
@@ -126,9 +129,9 @@ public class GenerateController {
                 // 判断是否为父级菜单
                 if (i == 0) {
                     if (pid == 0) {
-                        menu.setType(MenuTypeEnum.TOP_LEVEL.getCode());
+                        menu.setType(MenuTypeEnum.DIRECTORY.getCode());
                     }else {
-                        menu.setType(MenuTypeEnum.SUB_LEVEL.getCode());
+                        menu.setType(MenuTypeEnum.MENU.getCode());
                     }
                     pMenu = menuService.getByMenuToExample(menu);
                     if (pMenu == null) {
@@ -142,7 +145,7 @@ public class GenerateController {
                     if (bthMenu == null) {
                         Integer bthSort = menuService.getSortMax(pid);
                         menu.setSort(bthSort != null ? bthSort + 1 : 1);
-                        menu.setType(MenuTypeEnum.NOT_MENU.getCode());
+                        menu.setType(MenuTypeEnum.BUTTON.getCode());
                         bthMenus.add(menu);
                     }
                 }

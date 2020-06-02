@@ -1,8 +1,8 @@
- -- --------------------------------------------------------
+-- --------------------------------------------------------
 -- 主机:                           127.0.0.1
--- 服务器版本:                        5.7.23 - MySQL Community Server (GPL)
+-- 服务器版本:                        5.7.28 - MySQL Community Server (GPL)
 -- 服务器操作系统:                      Win64
--- HeidiSQL 版本:                  9.5.0.5196
+-- HeidiSQL 版本:                  10.2.0.5698
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,21 +28,21 @@ CREATE TABLE IF NOT EXISTS `sys_action_log` (
   PRIMARY KEY (`id`),
   KEY `FK32gm4dja0jetx58r9dc2uljiu` (`oper_by`),
   CONSTRAINT `FK32gm4dja0jetx58r9dc2uljiu` FOREIGN KEY (`oper_by`) REFERENCES `sys_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1051 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=216 DEFAULT CHARSET=utf8;
 
 -- 正在导出表  timo.sys_action_log 的数据：~10 rows (大约)
 /*!40000 ALTER TABLE `sys_action_log` DISABLE KEYS */;
 INSERT INTO `sys_action_log` (`id`, `name`, `type`, `ipaddr`, `clazz`, `method`, `model`, `record_id`, `message`, `create_date`, `oper_name`, `oper_by`) VALUES
-	(1, '角色状态', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'status', NULL, NULL, '删除ID：[15]', '2019-04-28 00:08:45', '超级管理员', 1),
-	(2, '日志管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'save', 'sys_role', 2, '更新日志成功：用户组1', '2019-04-28 00:09:06', '超级管理员', 1),
-	(3, '日志管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'save', 'sys_role', 3, '更新日志成功：用户组2', '2019-04-28 00:09:17', '超级管理员', 1),
-	(4, '日志管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'save', 'sys_role', 2, '更新日志成功：用户组1', '2019-04-28 00:09:28', '超级管理员', 1),
-	(5, '日志管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'save', 'sys_role', 2, '更新日志成功：用户组', '2019-04-28 00:09:32', '超级管理员', 1),
-	(6, '日志管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'save', 'sys_role', 2, '更新日志成功：开发组', '2019-04-28 00:10:00', '超级管理员', 1),
-	(7, '日志管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.RoleController', 'save', 'sys_role', 3, '更新日志成功：用户组', '2019-04-28 00:11:09', '超级管理员', 1),
-	(8, '菜单状态', 1, '127.0.0.1', 'com.linln.admin.system.controller.MenuController', 'status', NULL, NULL, '删除ID：[6, 2, 7, 16, 15, 17, 18, 19, 20, 4, 5, 11, 12, 13, 14, 1, 3, 8, 9, 10, 136, 137, 138, 139, 140, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 125, 146]', '2019-04-28 00:12:55', '超级管理员', 1),
-	(9, '菜单管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.MenuController', 'save', 'sys_menu', 157, '添加菜单：主页', '2019-04-28 00:13:59', '超级管理员', 1),
-	(10, '菜单管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.MenuController', 'save', 'sys_menu', 158, '添加菜单：系统管理', '2019-04-28 00:14:39', '超级管理员', 1);
+	(1, '用户登录', 2, '127.0.0.1', 'com.linln.admin.system.controller.LoginController', 'login', NULL, NULL, '后台登录成功', '2019-10-31 15:20:29', '超级管理员', 1),
+	(2, '用户登录', 2, '127.0.0.1', 'com.linln.admin.system.controller.LoginController', 'login', NULL, NULL, '后台登录成功', '2019-10-31 17:51:54', '超级管理员', 1),
+	(3, '用户管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.UserController', 'save', 'sys_user', 1, '更新用户成功：admin', '2019-10-31 18:04:23', '超级管理员', 1),
+	(4, '用户登录', 2, '127.0.0.1', 'com.linln.admin.system.controller.LoginController', 'login', NULL, NULL, '后台登录失败：[admin]用户名或密码错误', '2019-11-01 15:36:05', 'admin', NULL),
+	(5, '用户登录', 2, '127.0.0.1', 'com.linln.admin.system.controller.LoginController', 'login', NULL, NULL, '后台登录失败：[admin]用户名或密码错误', '2019-11-01 15:36:16', 'admin', NULL),
+	(6, '用户登录', 2, '127.0.0.1', 'com.linln.admin.system.controller.LoginController', 'login', NULL, NULL, '后台登录成功', '2019-11-01 15:36:37', '超级管理员', 1),
+	(7, '用户登录', 2, '127.0.0.1', 'com.linln.admin.system.controller.LoginController', 'login', NULL, NULL, '后台登录成功', '2019-11-06 19:51:41', '超级管理员', 1),
+	(8, '字典管理', 1, '127.0.0.1', 'com.linln.admin.system.controller.DictController', 'save', 'sys_dict', 4, '更新字典：菜单类型', '2019-11-06 20:08:46', '超级管理员', 1),
+	(9, '用户密码', 1, '127.0.0.1', 'com.linln.admin.system.controller.UserController', 'editPassword', 'sys_user', 1, '修改用户密码成功admin', '2019-11-06 20:09:17', '超级管理员', 1),
+	(10, '用户密码', 1, '127.0.0.1', 'com.linln.admin.system.controller.UserController', 'editPassword', 'sys_user', 2, '修改用户密码成功linln', '2019-11-06 20:09:17', '超级管理员', 1);
 /*!40000 ALTER TABLE `sys_action_log` ENABLE KEYS */;
 
 -- 导出  表 timo.sys_dept 结构
@@ -93,15 +93,15 @@ CREATE TABLE IF NOT EXISTS `sys_dict` (
   KEY `FKoyng5jlifhsme0gc1lwiub0lr` (`update_by`),
   CONSTRAINT `FKag4shuprf2tjot9i1mhh37kk6` FOREIGN KEY (`create_by`) REFERENCES `sys_user` (`id`),
   CONSTRAINT `FKoyng5jlifhsme0gc1lwiub0lr` FOREIGN KEY (`update_by`) REFERENCES `sys_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- 正在导出表  timo.sys_dict 的数据：~7 rows (大约)
+-- 正在导出表  timo.sys_dict 的数据：~6 rows (大约)
 /*!40000 ALTER TABLE `sys_dict` DISABLE KEYS */;
 INSERT INTO `sys_dict` (`id`, `title`, `name`, `type`, `value`, `remark`, `create_date`, `update_date`, `create_by`, `update_by`, `status`) VALUES
 	(1, '数据状态', 'DATA_STATUS', 2, '1:正常,2:冻结,3:删除', '', '2018-10-05 16:03:11', '2018-10-05 16:11:41', 1, 1, 1),
 	(2, '字典类型', 'DICT_TYPE', 2, '2:键值对', '', '2018-10-05 20:08:55', '2019-01-17 23:39:23', 1, 1, 1),
 	(3, '用户性别', 'USER_SEX', 2, '1:男,2:女', '', '2018-10-05 20:12:32', '2018-10-05 20:12:32', 1, 1, 1),
-	(4, '菜单类型', 'MENU_TYPE', 2, '1:一级菜单,2:子级菜单,3:不是菜单', '', '2018-10-05 20:24:57', '2018-10-13 13:56:05', 1, 1, 1),
+	(4, '菜单类型', 'MENU_TYPE', 2, '1:目录,2:菜单,3:按钮', '', '2018-10-05 20:24:57', '2019-11-06 20:08:46', 1, 1, 1),
 	(5, '搜索栏状态', 'SEARCH_STATUS', 2, '1:正常,2:冻结', '', '2018-10-05 20:25:45', '2019-02-26 00:34:34', 1, 1, 1),
 	(6, '日志类型', 'LOG_TYPE', 2, '1:业务,2:登录,3:系统', '', '2018-10-05 20:28:47', '2019-02-26 00:31:43', 1, 1, 1);
 /*!40000 ALTER TABLE `sys_dict` ENABLE KEYS */;
@@ -120,9 +120,9 @@ CREATE TABLE IF NOT EXISTS `sys_file` (
   PRIMARY KEY (`id`),
   KEY `FKkkles8yp0a156p4247cc22ovn` (`create_by`),
   CONSTRAINT `FKkkles8yp0a156p4247cc22ovn` FOREIGN KEY (`create_by`) REFERENCES `sys_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  timo.sys_file 的数据：~1 rows (大约)
+-- 正在导出表  timo.sys_file 的数据：~0 rows (大约)
 /*!40000 ALTER TABLE `sys_file` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sys_file` ENABLE KEYS */;
 
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `sys_menu` (
   KEY `FKsiko0qcr8ddamvrxf1tk4opgc` (`update_by`),
   CONSTRAINT `FKoxg2hi96yr9pf2m0stjomr3we` FOREIGN KEY (`create_by`) REFERENCES `sys_user` (`id`),
   CONSTRAINT `FKsiko0qcr8ddamvrxf1tk4opgc` FOREIGN KEY (`update_by`) REFERENCES `sys_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8;
 
 -- 正在导出表  timo.sys_menu 的数据：~37 rows (大约)
 /*!40000 ALTER TABLE `sys_menu` DISABLE KEYS */;
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `sys_role` (
   KEY `FKrouqqi3f2bgc5o83wdstlh6q4` (`update_by`),
   CONSTRAINT `FKdkwvv0rm6j3d5l6hwsy2dplol` FOREIGN KEY (`create_by`) REFERENCES `sys_user` (`id`),
   CONSTRAINT `FKrouqqi3f2bgc5o83wdstlh6q4` FOREIGN KEY (`update_by`) REFERENCES `sys_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- 正在导出表  timo.sys_role 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `sys_role` DISABLE KEYS */;
@@ -307,11 +307,11 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `username` varchar(255) DEFAULT NULL COMMENT '用户名',
   `nickname` varchar(255) DEFAULT NULL COMMENT '用户昵称',
-  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `password` char(64) DEFAULT NULL COMMENT '密码',
   `salt` varchar(255) DEFAULT NULL COMMENT '密码盐',
   `dept_id` bigint(20) DEFAULT NULL COMMENT '部门ID',
   `picture` varchar(255) DEFAULT NULL COMMENT '头像',
-  `sex` varchar(255) DEFAULT NULL COMMENT '性别（1:男,2:女）',
+  `sex` tinyint(4) DEFAULT NULL COMMENT '性别（1:男,2:女）',
   `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
   `phone` varchar(255) DEFAULT NULL COMMENT '电话号码',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
@@ -321,13 +321,13 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
   PRIMARY KEY (`id`),
   KEY `FKb3pkx0wbo6o8i8lj0gxr37v1n` (`dept_id`),
   CONSTRAINT `FKb3pkx0wbo6o8i8lj0gxr37v1n` FOREIGN KEY (`dept_id`) REFERENCES `sys_dept` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- 正在导出表  timo.sys_user 的数据：~2 rows (大约)
 /*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
 INSERT INTO `sys_user` (`id`, `username`, `nickname`, `password`, `salt`, `dept_id`, `picture`, `sex`, `email`, `phone`, `remark`, `create_date`, `update_date`, `status`) VALUES
-	(1, 'admin', '超级管理员', '3dd0affe1e514fa059d00bf63134fe48d45acd3f350aaed83b0b54ef05579092', '3ABR79', 2, NULL, '1', '10086@163.com', '10086', '', '2018-08-09 23:00:03', '2019-04-28 00:07:21', 1),
-	(2, 'linln', '小懒虫', 'f061ad891b99463f49e79b80fda22a2c2d320a248d485c6d8f188fb79be72a9b', '5f444i', 2, NULL, '2', '1008612@qq.com', '1008612', '', '2018-09-30 16:25:22', '2019-04-28 00:07:47', 1);
+	(1, 'admin', '超级管理员', '5fa04c0758ae596e2a93cd2802640693a5b08bdfacd4307abce323c85e481154', '7rl2t9', 1, NULL, 1, '10086@163.com', '10086', '', '2018-08-09 23:00:03', '2019-11-06 20:09:17', 1),
+	(2, 'linln', '小懒虫', '28bfc4f19b0d4b8a40018faf9aec4ad9db5491082dda439040b1c35ff8c533a7', 'gzNkXt', 2, NULL, 2, '1008612@qq.com', '1008612', '', '2018-09-30 16:25:22', '2019-11-06 20:09:17', 1);
 /*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
 
 -- 导出  表 timo.sys_user_role 结构
@@ -340,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `sys_user_role` (
   CONSTRAINT `FKhh52n8vd4ny9ff4x9fb8v65qx` FOREIGN KEY (`role_id`) REFERENCES `sys_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  timo.sys_user_role 的数据：~3 rows (大约)
+-- 正在导出表  timo.sys_user_role 的数据：~0 rows (大约)
 /*!40000 ALTER TABLE `sys_user_role` DISABLE KEYS */;
 INSERT INTO `sys_user_role` (`user_id`, `role_id`) VALUES
 	(1, 1),

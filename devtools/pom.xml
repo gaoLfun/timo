@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.linln</groupId>
         <artifactId>timo</artifactId>
-        <version>2.0.2</version>
+        <version>2.0.3</version>
     </parent>
 
     <dependencies>
@@ -29,23 +29,6 @@
             <artifactId>shiro</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <!--swagger2接口文档-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.8</version>
-            </dependency>
     </dependencies>
 
     <!-- 修复部分idea版本无法发布tpl文件到target目录下的问题 -->

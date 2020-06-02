@@ -12,6 +12,7 @@ import com.linln.common.utils.SpringContextUtil;
 import com.linln.common.vo.ResultVo;
 import com.linln.component.shiro.ShiroUtil;
 import com.linln.modules.system.domain.Menu;
+import com.linln.modules.system.domain.Role;
 import com.linln.modules.system.domain.Upload;
 import com.linln.modules.system.domain.User;
 import com.linln.modules.system.enums.MenuTypeEnum;
@@ -32,6 +33,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 /**
  * @author 小懒虫
  * @date 2018/8/14
@@ -63,7 +66,8 @@ public class MainController{
             menus.forEach(menu -> keyMenu.put(menu.getId(), menu));
         }else{
             // 其他用户需从相应的角色中获取菜单资源
-            user.getRoles().forEach(role -> {
+            Set<Role> roles = ShiroUtil.getSubjectRoles();
+            roles.forEach(role -> {
                 role.getMenus().forEach(menu -> {
                     if(menu.getStatus().equals(StatusEnum.OK.getCode())){
                         keyMenu.put(menu.getId(), menu);
@@ -75,11 +79,11 @@ public class MainController{
         // 封装菜单树形数据
         Map<Long, Menu> treeMenu = new HashMap<>(16);
         keyMenu.forEach((id, menu) -> {
-            if(!menu.getType().equals(MenuTypeEnum.NOT_MENU.getCode())){
+            if(!menu.getType().equals(MenuTypeEnum.BUTTON.getCode())){
                 if(keyMenu.get(menu.getPid()) != null){
                     keyMenu.get(menu.getPid()).getChildren().put(Long.valueOf(menu.getSort()), menu);
                 }else{
-                    if(menu.getType().equals(MenuTypeEnum.TOP_LEVEL.getCode())){
+                    if(menu.getType().equals(MenuTypeEnum.DIRECTORY.getCode())){
                         treeMenu.put(Long.valueOf(menu.getSort()), menu);
                     }
                 }
@@ -125,7 +129,6 @@ public class MainController{
             User subject = ShiroUtil.getSubject();
             subject.setPicture(((Upload) imageResult.getData()).getPath());
             userService.save(subject);
-            ShiroUtil.resetCookieRememberMe();
             return ResultVoUtil.SAVE_SUCCESS;
         }else {
             return imageResult;
@@ -142,13 +145,11 @@ public class MainController{
 
         // 复制保留无需修改的数据
         User subUser = ShiroUtil.getSubject();
-        String[] fields = {"id", "username", "password", "salt", "picture", "dept", "roles"};
-        EntityBeanUtil.copyProperties(subUser, user, fields);
+        String[] ignores = {"id", "username", "password", "salt", "picture", "dept", "roles"};
+        EntityBeanUtil.copyPropertiesIgnores(user, subUser, ignores);
 
         // 保存数据
-        userService.save(user);
-        BeanUtils.copyProperties(user, subUser);
-        ShiroUtil.resetCookieRememberMe();
+        userService.save(subUser);
         return ResultVoUtil.success("保存成功", new URL("/userInfo"));
     }
 
@@ -193,7 +194,6 @@ public class MainController{
 
         // 保存数据
         userService.save(subUser);
-        ShiroUtil.resetCookieRememberMe();
         return ResultVoUtil.success("修改成功");
     }
 }

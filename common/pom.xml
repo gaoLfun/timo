@@ -7,17 +7,10 @@
     <artifactId>common</artifactId>
     <packaging>jar</packaging>
     <name>公共模块</name>
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-        </dependency>
-    </dependencies>
 
     <parent>
         <groupId>com.linln</groupId>
         <artifactId>timo</artifactId>
-        <version>2.0.2</version>
+        <version>2.0.3</version>
     </parent>
 </project>

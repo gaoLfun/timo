@@ -3,6 +3,7 @@ package com.linln.component.shiro.config;
 import com.linln.component.shiro.AuthRealm;
 import com.linln.component.shiro.UserAuthFilter;
 import com.linln.component.shiro.config.properties.ShiroProjectProperties;
+import com.linln.component.shiro.remember.RememberMeManager;
 import net.sf.ehcache.CacheManager;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
@@ -79,10 +80,12 @@ public class ShiroConfig {
 
     @Bean
     public DefaultWebSecurityManager getDefaultWebSecurityManager(AuthRealm authRealm,
+                                                                  EhCacheManager cacheManager,
                                                                   DefaultWebSessionManager sessionManager,
                                                                   CookieRememberMeManager rememberMeManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(authRealm);
+        securityManager.setCacheManager(cacheManager);
         securityManager.setSessionManager(sessionManager);
         securityManager.setRememberMeManager(rememberMeManager);
         return securityManager;
@@ -129,7 +132,7 @@ public class ShiroConfig {
      */
     @Bean
     public CookieRememberMeManager rememberMeManager(SimpleCookie rememberMeCookie) {
-        CookieRememberMeManager manager = new CookieRememberMeManager();
+        RememberMeManager manager = new RememberMeManager();
         manager.setCipherKey(Base64.decode("WcfHGU25gNnTxTlmJMeSpw=="));
         manager.setCookie(rememberMeCookie);
         return manager;
